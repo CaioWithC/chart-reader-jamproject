@@ -1,5 +1,5 @@
 # chart-reader-jamproject <img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue">
-Calculador de dificuldade baseado em um arquivo .chart, com o resultado saindo com um contador de estrelas e patterns 
+Calculador de dificuldade baseado em um arquivo .chart, com o resultado saindo com um contador de estrelas e patterns (+ .txt com os mesmo resultados)
 
 # Usage
 ```python
@@ -11,7 +11,12 @@ Ou arraste o .chart em cima do .py
 
 ---
 ### Exemplo de Saida:
+CMD/Terminal:
 <img width="720" height="179" alt="image" src="https://github.com/user-attachments/assets/1c8a86a8-12c1-4029-997b-a9bece1a7f2e"/>
+
+Arquivo TXT: 
+<img width="720" height="179" alt="image" src="https://github.com/user-attachments/assets/4e4e15b7-5448-486b-b8a5-01162fc1d3ca" />
+
 
 ---
 
