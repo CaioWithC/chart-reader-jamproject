@@ -21,12 +21,12 @@ if __name__ == "__main__":
     base_name = os.path.splitext(os.path.basename(chart_file))[0]
     output_file = base_name + ".txt"
 
-    parser = ChartParser(chart_file)
+    parser = ChartParser.ChartParser(chart_file)
     notes = parser.parse()
 
-    timing = TimingEngine(parser.resolution, parser.bpms)
+    timing = TimingEngine.TimingEngine(parser.resolution, parser.bpms)
 
-    calc = DifficultyCalculator(notes, timing, parser.resolution)
+    calc = DifficultyCalculator.DifficultyCalculator(notes, timing, parser.resolution)
     stars, patterns = calc.compute_stars()
 
     # separar tipos
@@ -37,6 +37,8 @@ if __name__ == "__main__":
     strum_stars, strum_patterns = calc.compute_stars_for_notes(strum_notes)
     
     # console output
+    print(f"Title: {parser.title}")
+    print(f"Artist: {parser.artist}")
     print(f"\nFile: {chart_file}")
     print(f"★ Difficulty: {stars:.2f}/10")
     print("Patterns detected:")
@@ -45,7 +47,9 @@ if __name__ == "__main__":
         
     # write to txt
 with open(output_file, "w", encoding="utf-8") as f:
-    f.write(f"File: {chart_file}\n\n")
+    f.write(f"Title: {parser.title}\n")
+    f.write(f"Artist: {parser.artist}\n")
+    f.write(f"File: {chart_file}\n\n")    
 
     # =====================
     # ALL NOTES

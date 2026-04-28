@@ -9,6 +9,8 @@ class ChartParser:
         self.resolution = 192
         self.notes = []
         self.bpms = [(0, 120)]
+        self.title = "Unknown"
+        self.artist = "Unknown"
 
     def parse(self):
         section = None
@@ -24,6 +26,16 @@ class ChartParser:
                 if section == "Song":
                     if "Resolution" in line:
                         self.resolution = int(re.findall(r'\d+', line)[0])
+
+                if "Name" in line:
+                    match = re.search(r'"(.+)"', line)
+                    if match:
+                        self.title = match.group(1)
+
+                if "Artist" in line:
+                    match = re.search(r'"(.+)"', line)
+                    if match:
+                        self.artist = match.group(1)       
 
                 if section == "SyncTrack":
                     match = re.match(r"(\d+)\s*=\s*B\s*(\d+)", line)
