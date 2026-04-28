@@ -9,6 +9,9 @@ num CMD ou Terminal e.g: ``python.exe file.py example_chart.chart``
 
 Ou arraste o .chart em cima do .py
 
+[usage.webm](https://github.com/user-attachments/assets/fd4eb7bc-e319-4a2c-88d6-a9b5b94e9c1f)
+
+
 <details>
   <summary>
     Detalhes Resumidos
