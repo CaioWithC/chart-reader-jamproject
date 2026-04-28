@@ -12,6 +12,12 @@ class ChartParser:
         self.title = "Unknown"
         self.artist = "Unknown"
 
+    def format_title(self, title):
+        title = title.lower()
+        title = title.replace(" ", "_")
+        title = re.sub(r'[^a-z0-9_]', '', title)
+        return title
+    
     def parse(self):
         section = None
 
@@ -27,10 +33,17 @@ class ChartParser:
                     if "Resolution" in line:
                         self.resolution = int(re.findall(r'\d+', line)[0])
 
-                if "Name" in line:
+                if "Name" in line:  
                     match = re.search(r'"(.+)"', line)
                     if match:
-                        self.title = match.group(1)
+                        self.title = match.group(1)                
+                
+                match = re.match(r'(\w+)\s*=\s*"(.*)"', line)
+                if match:
+                    key = match.group(1).lower()
+                    value = match.group(2).strip()
+                    if key == "name":
+                        self.title = value
 
                 if "Artist" in line:
                     match = re.search(r'"(.+)"', line)
@@ -54,3 +67,4 @@ class ChartParser:
         self.notes.sort()
         self.bpms.sort()
         return self.notes
+    
